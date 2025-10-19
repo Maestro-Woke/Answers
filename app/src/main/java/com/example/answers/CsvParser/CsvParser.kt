@@ -53,8 +53,8 @@ class CsvParser(private val context: Context) {
                 header.split("\n").first().trim()
             }
 
-            Log.d("CsvParser", "🎯 Найдено ${kimNumbers.size} КИМов")
-            Log.d("CsvParser", "📝 Первые 10 КИМов: ${kimNumbers.take(10)}")
+            Log.d("CsvParser", "Найдено ${kimNumbers.size} КИМов")
+            Log.d("CsvParser", "Первые 10 КИМов: ${kimNumbers.take(10)}")
 
             var lineNum = 1
             // Читаем остальные строки
@@ -70,7 +70,7 @@ class CsvParser(private val context: Context) {
 
                 if (taskNumber.isEmpty()) continue
 
-                Log.d("CsvParser", "📍 Обрабатываем задачу №$taskNumber")
+                Log.d("CsvParser", "Обрабатываем задачу №$taskNumber")
 
                 // Остальные колонки - ответы для каждого КИМа
                 for (i in 1 until cells.size) {
@@ -123,10 +123,10 @@ class CsvParser(private val context: Context) {
                 }
             }
 
-            Log.d("CsvParser", "📊 Всего задач: ${tasks.size}")
+            Log.d("CsvParser", "Всего задач: ${tasks.size}")
 
         } catch (e: Exception) {
-            Log.e("CsvParser", "💥 Ошибка парсинга: ${e.message}", e)
+            Log.e("CsvParser", "Ошибка парсинга: ${e.message}", e)
             e.printStackTrace()
         }
     }
