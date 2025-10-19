@@ -18,7 +18,7 @@ class CsvParser(private val context: Context) {
                 val reader = BufferedReader(InputStreamReader(inputStream, Charsets.UTF_8))
                 parseTasks(reader, tasks)
             }
-            Log.d("CsvParser", "Загружено из assets: ${tasks.size} задач")
+            Log.d("CsvParser", "Загружено из assets: ${tasks.size} задачв")
         } catch (e: Exception) {
             Log.e("CsvParser", "Ошибка assets: ${e.message}", e)
         }
