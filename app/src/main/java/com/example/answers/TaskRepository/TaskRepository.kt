@@ -27,10 +27,4 @@ class TaskRepository(private val taskDao: TaskDao) {
     suspend fun getCount(): Int {
         return taskDao.getCount()
     }
-
-    // В файле TaskRepository.kt добавьте:
-
-    suspend fun getTasksByKim(kimNumber: String): List<TaskEntity> = withContext(Dispatchers.IO) {
-        taskDao.getTasksByKim(kimNumber)
-    }
 }

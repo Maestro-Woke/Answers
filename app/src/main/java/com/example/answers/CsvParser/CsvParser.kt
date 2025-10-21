@@ -43,10 +43,10 @@ class CsvParser(private val context: Context) {
         try {
             // Читаем первую строку (заголовки)
             val headerLine = readCsvRecord(reader) ?: return
-            Log.d("CsvParser", "📋 Заголовок (первые 10): ${headerLine.take(10)}")
+            Log.d("CsvParser", "Заголовок (первые 10): ${headerLine.take(10)}")
 
             // Первая колонка - "¹" или "№", остальные - номера КИМов
-            val kimHeaders = headerLine.drop(1) // Пропускаем первую колонку
+            val kimHeaders = headerLine.drop(1)
 
             // Берём только ПЕРВУЮ строку (до переноса) из каждого заголовка
             val kimNumbers = kimHeaders.map { header ->

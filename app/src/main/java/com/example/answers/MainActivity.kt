@@ -248,7 +248,7 @@ fun MainScreen(repository: TaskRepository, csvParser: CsvParser) {
                 ),
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Number,
-                    imeAction = ImeAction.Next // Переход к следующему полю
+                    imeAction = ImeAction.Next
                 ),
                 singleLine = true
             )
@@ -282,7 +282,7 @@ fun MainScreen(repository: TaskRepository, csvParser: CsvParser) {
                 ),
                 keyboardOptions = KeyboardOptions(
                     keyboardType = KeyboardType.Number,
-                    imeAction = ImeAction.Done // Кнопка "Готово"
+                    imeAction = ImeAction.Done
                 ),
                 keyboardActions = KeyboardActions(
                     onDone = {
@@ -312,7 +312,7 @@ fun MainScreen(repository: TaskRepository, csvParser: CsvParser) {
                             val result = repository.getTask(kim, task)
 
                             if (result != null) {
-                                //Log.d("MainActivity", "Найдено: ${result.answer}")
+                                Log.d("MainActivity", "Найдено: ${result.answer}")
                                 answerText = result.answer
                                 linkText = result.videoLink
                             } else {
@@ -399,58 +399,3 @@ fun MainScreen(repository: TaskRepository, csvParser: CsvParser) {
         }
     }
 }
-
-
-// ===== ФУНКЦИИ ОТЛАДКИ =====
-
-/*suspend fun debugKim4(repository: TaskRepository) {
-    Log.d("MainActivity", "====== ОТЛАДКА КИМ=4 ======")
-
-    val allKim4 = repository.getTasksByKim("4")
-    Log.d("MainActivity", "Всего записей для КИМ=4: ${allKim4.size}")
-
-    if (allKim4.isNotEmpty()) {
-        Log.d("MainActivity", "Первые 5 записей для КИМ=4:")
-        allKim4.take(5).forEach { task ->
-            Log.d("MainActivity", "Задача=${task.taskNumber}, Ответ=${task.answer}")
-        }
-
-        // Ищем конкретно задачу 12
-        val task12 = allKim4.find { it.taskNumber == "12" }
-        if (task12 != null) {
-            Log.d("MainActivity", "НАЙДЕНА ЗАДАЧА 12!")
-            Log.d("MainActivity", "   КИМ='${task12.kimNumber}'")
-            Log.d("MainActivity", "   Задача='${task12.taskNumber}'")
-            Log.d("MainActivity", "   Ответ='${task12.answer}'")
-            Log.d("MainActivity", "   Ссылка='${task12.videoLink}'")
-        } else {
-            Log.e("MainActivity", "Задача 12 НЕ НАЙДЕНА для КИМ=4!")
-        }
-    }
-
-    Log.d("MainActivity", "============================")
-}
-
-suspend fun debugSearch(repository: TaskRepository, kim: String, task: String) {
-    Log.d("MainActivity", "====== ОТЛАДКА ПОИСКА ======")
-    Log.d("MainActivity", "Ищем: КИМ='$kim', Задача='$task'")
-
-    // Проверяем все записи для этого КИМа
-    val allForKim = repository.getTasksByKim(kim)
-    Log.d("MainActivity", "Всего записей для КИМ=$kim: ${allForKim.size}")
-
-    if (allForKim.isNotEmpty()) {
-        Log.d("MainActivity", "Номера задач для КИМ=$kim:")
-        allForKim.take(10).forEach {
-            Log.d("MainActivity", "  - Задача '${it.taskNumber}'")
-        }
-
-        // Ищем нужную задачу
-        val found = allForKim.find { it.taskNumber == task }
-        if (found != null) {
-            Log.d("MainActivity", "Задача ЕСТЬ в списке! Ответ='${found.answer}'")
-        } else {
-            Log.e("MainActivity", "Задача '$task' не найдена в списке")
-        }
-    }
-}*/
