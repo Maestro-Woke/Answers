@@ -17,6 +17,7 @@ import androidx.compose.foundation.text.KeyboardOptions
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
+import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Brush
@@ -116,12 +117,12 @@ fun getAdaptiveSizes(): ScreenSizes {
 
 @Composable
 fun MainScreen(repository: TaskRepository, csvParser: CsvParser) {
-    var kimText by remember { mutableStateOf("") }
-    var taskText by remember { mutableStateOf("") }
-    var answerText by remember { mutableStateOf("ответ") }
-    var linkText by remember { mutableStateOf("") }
+    var kimText by rememberSaveable { mutableStateOf("") }
+    var taskText by rememberSaveable { mutableStateOf("") }
+    var answerText by rememberSaveable { mutableStateOf("ответ") }
+    var linkText by rememberSaveable { mutableStateOf("") }
     var isLoading by remember { mutableStateOf(false) }
-    var dbCount by remember { mutableStateOf(0) }
+    var dbCount by rememberSaveable { mutableStateOf(0) }
 
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
@@ -252,7 +253,9 @@ fun MainScreen(repository: TaskRepository, csvParser: CsvParser) {
                 ),
                 singleLine = true
             )
+
             Spacer(modifier = Modifier.height(sizes.sectionSpacing))
+
             Text(
                 text = "задача",
                 fontSize = sizes.titleSize,

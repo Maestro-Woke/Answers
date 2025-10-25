@@ -18,7 +18,7 @@ class CsvParser(private val context: Context) {
                 val reader = BufferedReader(InputStreamReader(inputStream, Charsets.UTF_8))
                 parseTasks(reader, tasks)
             }
-            Log.d("CsvParser", "Загружено из assets: ${tasks.size} задачв")
+            Log.d("CsvParser", "Загружено из assets: ${tasks.size} задач")
         } catch (e: Exception) {
             Log.e("CsvParser", "Ошибка assets: ${e.message}", e)
         }
@@ -131,9 +131,7 @@ class CsvParser(private val context: Context) {
         }
     }
 
-    /**
-     * Читает одну запись CSV (может быть многострочной из-за кавычек)
-     */
+    // Читает одну запись CSV (может быть многострочной из-за кавычек)
     private fun readCsvRecord(reader: BufferedReader): List<String>? {
         val cells = mutableListOf<String>()
         val currentCell = StringBuilder()
